@@ -12,7 +12,7 @@ function App() {
     <>
     <Box minH={"100vh"} bg={useColorModeValue("gray.100", "gray.700")}>
       <Navbar  />
-      <Container  maxW='container.xl' py={10}>
+      {/* <Container  maxW='container.xl' py={10}>
         <Flex h={16} gap={4} 
         flexDir={{
           base:"column",
@@ -22,7 +22,7 @@ function App() {
           <Button as={Link} to="/create" colorScheme="orange">Create</Button>
           <Button as={Link} to="/about" colorScheme="blue">About</Button>
         </Flex>
-      </Container>
+      </Container> */}
       <Divider />
       
       
