@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"; // ✅ correct import
 import { CgAddR } from "react-icons/cg";
 import { LuSun } from "react-icons/lu";
 import { IoMoonOutline } from "react-icons/io5";
-
+import { MdOutlineDeveloperMode } from "react-icons/md";
 const Navbar = () => {
     const {colorMode, toggleColorMode}=useColorMode()
     return (
@@ -32,9 +32,17 @@ const Navbar = () => {
                    
                 </Text>
                 <HStack spaceing={2} alignItems={"center"}>
+
                 <Link to={"/create"}>
                     <Button>
                         <CgAddR size={30}/>
+                    </Button>
+                </Link>
+                <Link to={"/about"}>
+                    <Button>
+                        
+                        <MdOutlineDeveloperMode  size={30}/>
+
                     </Button>
                 </Link>
                 <Button onClick={toggleColorMode}>
@@ -42,7 +50,9 @@ const Navbar = () => {
                 {colorMode === "light"? <IoMoonOutline size="28"/>:
                 <LuSun size="28"/>}
                 
+                
                 </Button>
+                             
                 
                 </HStack>
 

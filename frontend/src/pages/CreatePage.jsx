@@ -1,7 +1,8 @@
-import { Box, Button, Container, Heading, Input, useColorModeValue, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Box,useToast, Button, Container, Heading, Input, useColorModeValue, VStack } from '@chakra-ui/react'
+import React, { useState, useRef } from 'react'
 import { useProductStore } from '../store/product.store';
-import { useToast } from '@chakra-ui/react'
+
+
 
 const CreatePage = () => {
     const [newProduct, setNewProduct] = useState({
@@ -9,6 +10,7 @@ const CreatePage = () => {
         price: "",
         image:"",
     })
+    const nameInputRef = useRef();
     const toast = useToast()
 
     const { createProduct } = useProductStore();
@@ -22,7 +24,9 @@ const CreatePage = () => {
                 status: 'error',
                 duration: 4000,
                 isClosable: true,
-            })
+            });
+
+            
         } else{
             toast({
                 title: 'Product created successfully.',
@@ -32,7 +36,8 @@ const CreatePage = () => {
                 isClosable: true,
               })
         }
-        setNewProduct({name: "", price:"",image:""})
+        setNewProduct({name: "", price:"",image:""});
+        nameInputRef.current?.focus();
     }
 
     return (
@@ -50,7 +55,9 @@ const CreatePage = () => {
                         autoFocus
                         value={newProduct.name}
                         onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
+                        ref={nameInputRef}
                         />
+
                         <Input
                         placeholder='Price'
                         name='price'
@@ -66,7 +73,8 @@ const CreatePage = () => {
                         />
                         <Button w='full' 
                         colorScheme='blue' 
-                        onClick={handleAddProduct}>
+                        onClick={handleAddProduct} 
+                        >
                             Add Product
                         </Button>
                     </VStack>
