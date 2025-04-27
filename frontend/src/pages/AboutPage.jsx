@@ -26,9 +26,10 @@ const AboutPage = () => {
         
 
 
-        <Tooltip label='Developer' fontSize={{ base: "15", sm: "18" }}>
+        <Tooltip label='Developer'  fontSize={{ base: "15", sm: "18" }}>
        <IconButton
          textAlign={"right"}
+         mr={3}
          icon={<FaUser />}
        />  Md Abdus Sobur Sikdar
       </Tooltip>
@@ -44,6 +45,7 @@ const AboutPage = () => {
          aria-label='Call Sage'
          textAlign={"right"}
          icon={<PhoneIcon />}
+         mr={3}
        /> +46 738 752 094
       </Tooltip>
        <Divider orientation='horizontal' />
@@ -51,6 +53,7 @@ const AboutPage = () => {
        <IconButton
          aria-label='Call Sage'
          textAlign={"right"}
+         mr={3}
          icon={<EmailIcon />}
        />  mdabdussobursikdar@gmail.com
       </Tooltip>

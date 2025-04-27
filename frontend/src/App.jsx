@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CreatePage from "./pages/CreatePage";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
       </Routes>
       
     </Box>
+
+    <Footer />
 
     
     </>

@@ -1,33 +1,39 @@
-import React from 'react'
-import { Box, Flex, Text, Link, Stack } from "@chakra-ui/react";
+// src/components/Footer.jsx
+import { Box, Text, Stack, useColorModeValue, Highlight } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-    return (
-        <Box bg="gray.600" color="gray.200" py={6} mt={1}>
-            <Flex
-            direction={{ base: "column", md: "row" }}
-            align="center"
-            justify="space-between"
-            maxW="6xl"
-            mx="auto"
-            px={4}
+  return (
+    <Box
+      as="footer"
+      py={4}
+      bg={useColorModeValue("gray.100", "gray.900")}
+      color={useColorModeValue("gray.700", "gray.200")}
+      mt={0}
+      textAlign="center"
+    >
+      <Stack spacing={2}>
+        <Text fontSize="sm">
+          © {new Date().getFullYear()} <Link to={"about"} > 
+           <Text as="u">
+           <Highlight
+            query='KnitNox'
+            as='u'
+            styles={{ px: '2', py: '1',  bg: 'green.200' }}
             >
-            <Text fontSize="sm">© {new Date().getFullYear()} KnitKnox. All rights reserved.</Text>
-    
-            <Stack direction="row" spacing={4} mt={{ base: 4, md: 0 }}>
-                <Link href="#" _hover={{ textDecoration: "underline" }}>
-                Privacy Policy
-                </Link>
-                <Link href="#" _hover={{ textDecoration: "underline" }}>
-                Terms of Service
-                </Link>
-                <Link href="#" _hover={{ textDecoration: "underline" }}>
-                Contact
-                </Link>
-            </Stack>
-            </Flex>
-        </Box>
-    )
-}
+            KnitNox
+            </Highlight>  
+            </Text> 
+      
+          
+          </Link>. All rights reserved.
+        </Text>
+        <Text fontSize="xs">
+          Built with ❤️ using React, Vite, Node, Express, MongoDB
+        </Text>
+      </Stack>
+    </Box>
+  );
+};
 
-export default Footer
+export default Footer;
