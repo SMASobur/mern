@@ -1,5 +1,6 @@
 import { 
-    Box, Button, Heading, HStack, IconButton, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useColorModeValue, useDisclosure, useToast, VStack, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter 
+    Box, Button, Heading, HStack, IconButton, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useColorModeValue, useDisclosure, useToast, VStack, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, 
+    Link
   } from '@chakra-ui/react';
   import React, { useRef, useState } from 'react';
   import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
@@ -15,6 +16,7 @@ import {
   
     const { isOpen: isEditOpen, onOpen: onEditOpen, onClose: onEditClose } = useDisclosure();
     const { isOpen: isDeleteOpen, onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure();
+    const { isOpen: isModalOpen, onOpen: onModalOpen, onClose: onModalClose } = useDisclosure();
     const cancelRef = useRef();
   
     const handleDeleteProduct = async (pid) => {
@@ -70,20 +72,42 @@ import {
         _hover={{ transform: "translateY(-5px)", shadow: "xl" }}
         bg={bg}
       >
-        <Image src={product.image} alt={product.name} h={48} w='full' objectFit='cover' />
+        <Link onClick={onModalOpen}> 
+        <Image src={product.image} alt={product.name}  h={48} w='full' objectFit='cover' />
+        </Link>
+        
         <Box p={4}>
           <Heading as='h3' size='md' mb={2}>
             {product.name}
           </Heading>
           <Text fontWeight='bold' fontSize='xl' color={textColor} mb={4}>
-            {product.price} kr
+            {product.price} :-
           </Text>
           <HStack spacing={2}>
             <IconButton icon={<EditIcon />} onClick={onEditOpen} colorScheme='blue' />
             <IconButton icon={<DeleteIcon />} onClick={onDeleteOpen} colorScheme='red' />
           </HStack>
         </Box>
-        
+
+        {/* Modal for view the Product */}
+        <Modal isOpen={isModalOpen} onClose={onModalClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Poduct detials</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Image  src={product.image} alt={product.name} h={400} w='full' objectFit='cover' />
+            <Heading textAlign="center" p={4}  as='h3' size='md' mb={2}>
+              {product.name}
+            </Heading>
+            <Text textAlign="center" fontWeight='bold' fontSize='xl' color={textColor} mb={4}>
+              {product.price} :-
+            </Text>
+          </ModalBody>
+
+          
+        </ModalContent>
+      </Modal>
   
         {/* Modal for Updating Product */}
         <Modal isOpen={isEditOpen} onClose={onEditClose}>

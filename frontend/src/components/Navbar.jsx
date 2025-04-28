@@ -6,6 +6,8 @@ import { CgAddR } from "react-icons/cg";
 import { LuSun } from "react-icons/lu";
 import { IoMoonOutline } from "react-icons/io5";
 import { MdOutlineDeveloperMode } from "react-icons/md";
+
+
 const Navbar = () => {
     const {colorMode, toggleColorMode}=useColorMode()
     return (
@@ -52,7 +54,8 @@ const Navbar = () => {
                 
                 
                 </Button>
-                             
+                
+                                                
                 
                 </HStack>
 
