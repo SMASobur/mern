@@ -1,4 +1,4 @@
-import { Box,useToast, Button, Container, Heading, Input, useColorModeValue, VStack } from '@chakra-ui/react'
+import { Box,useToast, Button, Container, Heading, Text, Input, useColorModeValue, VStack } from '@chakra-ui/react'
 import React, { useState, useRef } from 'react'
 import { useProductStore } from '../store/product.store';
 
@@ -51,7 +51,7 @@ const CreatePage = () => {
                 p={5} rounded={"md"} shadow={"md"}>
                     <VStack spacing={4}>
                         <Input
-                        placeholder='Product Name'
+                        placeholder='Product Name *'
                         name='name'
                         autoFocus
                         value={newProduct.name}
@@ -60,7 +60,7 @@ const CreatePage = () => {
                         />
 
                         <Input
-                        placeholder='Price'
+                        placeholder='Price *'
                         name='price'
                         type='number'
                         value={newProduct.price}
@@ -80,6 +80,7 @@ const CreatePage = () => {
                         onChange={(e) => setNewProduct({...newProduct, details: e.target.value})}
                         ref={nameInputRef}
                         />
+                        <Text   color={'orange.500'} > * Fields are mandatory. </Text>
                         <Button w='full' 
                         colorScheme='blue' 
                         onClick={handleAddProduct} 

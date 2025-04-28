@@ -6,7 +6,7 @@ export const useProductStore = create((set)=>({
 
     createProduct: async (newProduct)=>{
         if(!newProduct.name || !newProduct.price || !newProduct.image){
-            return {success: false, message: "Please fill all the fields"}
+            return {success: false, message: "Please fill all mandatory * fields"}
         }
 
         const res = await fetch("/api/products", {

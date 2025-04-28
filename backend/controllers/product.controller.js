@@ -18,7 +18,10 @@ export const createProduct = async (req, res) => {
   if (!product.name || !product.price || !product.image) {
     return res
       .status(400)
-      .json({ success: false, message: "please porvide all the fields" });
+      .json({
+        success: false,
+        message: "please porvide/fill all mandatory * fields",
+      });
   }
 
   const newProduct = new Product(product);
