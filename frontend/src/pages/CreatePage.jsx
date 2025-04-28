@@ -9,6 +9,7 @@ const CreatePage = () => {
         name: "",
         price: "",
         image:"",
+        details:"",
     })
     const nameInputRef = useRef();
     const toast = useToast()
@@ -36,7 +37,7 @@ const CreatePage = () => {
                 isClosable: true,
               })
         }
-        setNewProduct({name: "", price:"",image:""});
+        setNewProduct({name: "", price:"",image:"", details:""});
         nameInputRef.current?.focus();
     }
 
@@ -70,6 +71,14 @@ const CreatePage = () => {
                         name='image'
                         value={newProduct.image}
                         onChange={(e) => setNewProduct({...newProduct, image: e.target.value})}
+                        />
+                        <Input
+                        placeholder='Product Details'
+                        name='details'
+                        
+                        value={newProduct.details}
+                        onChange={(e) => setNewProduct({...newProduct, details: e.target.value})}
+                        ref={nameInputRef}
                         />
                         <Button w='full' 
                         colorScheme='blue' 

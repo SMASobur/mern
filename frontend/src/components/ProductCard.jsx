@@ -1,6 +1,7 @@
 import { 
     Box, Button, Heading, HStack, IconButton, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useColorModeValue, useDisclosure, useToast, VStack, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, 
-    Link
+    Link,
+    Flex
   } from '@chakra-ui/react';
   import React, { useRef, useState } from 'react';
   import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
@@ -89,7 +90,7 @@ import {
           </HStack>
         </Box>
 
-        {/* Modal for view the Product */}
+        {/* Modal for view the Product details */}
         <Modal isOpen={isModalOpen} onClose={onModalClose}>
         <ModalOverlay />
         <ModalContent>
@@ -103,6 +104,11 @@ import {
             <Text textAlign="center" fontWeight='bold' fontSize='xl' color={textColor} mb={4}>
               {product.price} :-
             </Text>
+            <Flex align="center" justify="center" fontWeight="bold" fontSize="xl" color={textColor} mb={4} gap={2} flexWrap="wrap">
+            <Text>This is {product.name}</Text>
+            <Image src={product.image} alt={product.name} h={10} w={10} objectFit="cover" borderRadius="md" />
+            <Text>and price per kg is: {product.price}:-  🎉. {product.details}</Text>
+          </Flex>
           </ModalBody>
 
           
@@ -132,6 +138,11 @@ import {
                   placeholder='Image'
                   value={updatedProduct.image}
                   onChange={(e) => setUpdatedProduct({ ...updatedProduct, image: e.target.value })}
+                />
+                <Input
+                  placeholder='Product details'
+                  value={updatedProduct.details}
+                  onChange={(e) => setUpdatedProduct({ ...updatedProduct, details: e.target.value })}
                 />
               </VStack>
             </ModalBody>
