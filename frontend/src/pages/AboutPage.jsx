@@ -21,7 +21,7 @@ const AboutPage = () => {
           
           styles={{ px: '2', py: '1', rounded: 'full', bg: 'green.200' }}
         >
-          Proudly made by KnitNox
+          Proudly made by KnitNox 
         </Highlight></Text>
         
 
